@@ -126,7 +126,7 @@ c2.width = c3.width = window.innerWidth-27;
 c2.height = c3.height = content_height;
 // ctx1.fillStyle = '#494A5F';
 ctx1.fillStyle = 'C70092';
-const text = '我们结婚了';
+const text = '我们结婚啦';
 let textWidth = 99999999;
 
 while (textWidth > window.innerWidth) {
