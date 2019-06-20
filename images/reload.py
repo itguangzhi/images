@@ -1,14 +1,32 @@
 import os
 
-dir = 'marry/'
+new_list = {}
 
-dir_list = os.listdir(dir)
-for name in dir_list:
-    filepath = 'images/'+dir+name
+dir_list = {'wang':'wang','hu':'hu','women':'women'}
+for typea in dir_list:
+  dir = dir_list[typea]
+  file_list = os.listdir(dir)
+  for name in file_list:
+      new_list[name.split('.')[0]] = typea
 
-    content = '''
-<div class="grid__item" data-size="1280x853"> <a href="%s" class="img-wrap"><img src="%s" alt="img1" />
-    <div class="description description--grid">结婚证照片</div>
-    </a> </div>
-'''%(filepath,filepath)
-    print(content)
+
+new_lists = sorted(new_list.keys())
+for names in new_lists:
+  dir = new_list[names]
+  filename = names+'.jpg'
+  file_path = 'images/'+dir+'/'+filename
+  content = '''
+        <div data-sjsel="%s">
+            <div class="card">
+                <a href="%s" target="_blank">
+                  <img class="card__picture" src="%s">
+                </a>
+                <div class="card-infos">
+                    <h2 class="card__title">%s</h2>
+                    <p class="card__text">
+                      这里是备注
+                    </p>
+                </div>
+            </div>
+        </div>''' % (dir,file_path,file_path,names)
+  print(content)
